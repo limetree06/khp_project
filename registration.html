@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>K-Cloud Project 시뮬레이션</title>
+        <meta content="utf-8" http-equiv="encoding">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <link rel="stylesheet" type="text/css" href="./css/main.css">  
+        <link rel="stylesheet" href="assets/css/main.css">
+        <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" ></script>
+        <script  type="text/javascript" src="./node_modules/bignumber.js/bignumber.min.js"></script> 
+        <script src="./node_modules/web3/dist/web3.min.js"></script>
+        <script src="./node_modules/d3/dist/d3.min.js"></script>        
+    </head>
+
+    <body>
+            <section id="features">
+                <a class="icon solid fa-home" href="index.html"><span>홈으로</span></a>
+                <div class="container1">
+                <header>
+                    <h2><strong>등록</strong></h2>
+                </header>
+                
+                
+                <div class="row aln-center">
+                    <div class="col-4 col-6-medium col-12-small">
+                        <h3>드럼 등록</h3>
+                        
+                            <label for="drumNum"> 드럼 식별 번호 : </label>
+                            <input id="drumNum" type="number" placeholder="번호"><br>
+
+                            <label for="drumId"> 드럼 ID : </label>
+                            <input id="drumId" type="text" autofocus placeholder="ID"><br>
+
+                            <label for="temp"> 임계 온도 : </label>
+                            <input id="temp" type="number" placeholder="온도"><br>
+
+                            <label for="drumType"> 드럼의 폐기물 종류 : </label>
+                                <select name="type" id="drumType">
+                                    <option>-- 드럼의 폐기물 종류 : --</option>
+                                    <option value="inconel 690">inconel 690</option>
+                                    <option value="inconel 718">inconel 718</option>
+                                    <option value="금">금</option>
+                                    <option value="구리">구리</option>
+                                    <option value="방사능 폐기물">방사능 폐기물</option>
+                                </select>
+                        
+                            <br>
+                            
+                            <button id="button_drum" type="submit"> 등록하기 </button>
+
+                            <h4 id = "Transaction_Drum"> </h4>
+                            <div id = comments></div>
+
+                    </div>
+                    <div class="col-4 col-6-medium col-12-small">
+                        <h3>센서 등록</h3>
+                            <label for="drumNumsen" >드럼 식별 번호 : </label>
+                            <input id="drumNumsen" type="number" placeholder="번호"><br>
+
+                            
+                            <label for="sensorId"> 센서그룹 ID : </label>
+                            <input id="sensorId" type="text" autofocus placeholder="ID"><br>
+
+                            <label for="sensorType"> 센서의 폐기물 종류 : </label>
+                                <select name="type" id="sensorType">
+                                    <option>--센서의 폐기물 종류--</option>
+                                    <option value="inconel 690">inconel 690</option>
+                                    <option value="inconel 718">inconel 718</option>
+                                    <option value="금">금</option>
+                                    <option value="구리">구리</option>
+                                    <option value="방사능 폐기물">방사능 폐기물</option>
+                                </select>
+                            
+                            <br>
+                            <button id="button_sen" type="submit">등록하기</button>
+
+                            <h4 id = "Transaction_sen"> </h4>
+                            <div id = comments1></div>
+
+                        </div>
+                    </div>
+                </div>    
+    </section>
+
+        <!-- Scripts -->
+    
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/jquery.dropotron.min.js"></script>
+        <script src="assets/js/browser.min.js"></script>
+        <script src="assets/js/breakpoints.min.js"></script>
+        <script src="assets/js/util.js"></script>
+        <script src="assets/js/main.js"></script>
+        <script src="js/index.js"></script>
+    </body>
+</html>
+

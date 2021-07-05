@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>K-Cloud Project</title>
+        <meta content="utf-8" http-equiv="encoding">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <link rel="stylesheet" type="text/css" href="./css/main.css">  
+        <link rel="stylesheet" href="assets/css/main.css">
+        <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" ></script>
+        <script  type="text/javascript" src="./node_modules/bignumber.js/bignumber.min.js"></script> 
+        <script src="./node_modules/web3/dist/web3.min.js"></script>
+        <script src="./node_modules/d3/dist/d3.min.js"></script>        
+    </head>
+
+    <body> 
+            <section id="features">
+                  <div class="container1">
+                    <a class="icon solid fa-home" href="index.html"><span>홈으로</span></a>
+                    <header>
+                        <h2><strong>모니터링</strong></h2>
+                    </header>
+                    
+                            <div class="row aln-center">
+                                <div class="col-4 col-6-medium col-12-small">
+                                
+                            <h3>저장</h3>
+                                <label for="getst" >드럼 식별 번호 : </label>
+                                <input id="getst" type="number" placeholder="번호"><br>
+    
+                                <label for="temp_sto" >현재 온도 : </label>
+                                <input id="temp_sto" type="number" placeholder="온도"><br>
+    
+                                <button id="button_sto" type="submit">모니터링</button>
+                                <br><h4 id = "sto_event"></h4>
+                                
+
+                            </div>
+                            <div class="col-4 col-6-medium col-12-small">
+                                
+
+                            <h3 >드럼 상태 검색</h3>
+                                <label for="getnum_SC" >드럼 식별 번호 : </label>
+                                <input id="getnum_SC" type="number" placeholder="번호"><br>
+                                <button id="button_check" type="submit">검색</button>
+                                <br><h4 id = "Status_check"></h4>
+                                <br><h4 id = "Status_detail"> </h4>
+                                <br><h4 id = "Status_Process"></h4>
+                                <br><h4 id = "Status_condition"></h4>
+                                <br><h4 id = "Status_info"></h4>
+                                
+                        </div>
+                    </div>
+                </div>
+
+                        <div class="container1">
+                            <h2><strong>경보</strong></h2>
+                            <button id="get_data" class="button_s">시뮬레이션</button>
+                                <h4 id = "Which_Process"></h4>
+                                <br><h4 id = "getdrum_info"></h4>
+                                <br><h4 id = "detail"> </h4>
+                            </div>
+                </section>
+
+        <!-- Scripts -->
+    
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/jquery.dropotron.min.js"></script>
+        <script src="assets/js/browser.min.js"></script>
+        <script src="assets/js/breakpoints.min.js"></script>
+        <script src="assets/js/util.js"></script>
+        <script src="assets/js/main.js"></script>
+        <script src="js/index.js"></script>
+    </body>
+</html>
+

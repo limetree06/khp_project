@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>    <link rel="stylesheet" type="text/css" href="main.css">   
+    <script src="node_modules/web3/dist/web3.min.js"></script></head>
+<body>
+    <div class="container">        
+    <h1>Call the loan record smart contract</h1>       
+    <h2 id="status"></h2>        
+    <label for="lender" class="col-lg-2 control-label">Lender</label>
+        <input id="lender" type="text">       
+    <label for="borrower" class="col-lg-2 control-label">Borrower</label>
+        <input id="borrower" type="text">    
+    <label for="amount" class="col-lg-2 control-label">Amount</label>
+        <input id="amount" type="text">  
+    <button id="button">Create loan record</button>
+    </div>    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>    
+    
+    
+    
+    
+    <script>
+       
+       if (typeof web3 !== 'undefined') {
+            web3 = new Web3(web3.currentProvider);
+        } else {
+            // set the provider you want from Web3.providers
+            web3 = new Web3(new Web3.providers.HttpProvider("http://127.0.0.1:7545"));   
+        }
+        
+        
+  
+  // web3.eth.defaultAccount = web3.eth.accounts[0]
+  // console.log(web3.eth.defaultAccount);
+  
+  
+
+  
+web3.eth.getAccounts()
+.then(console.log);
+      
+var ABI = JSON.parse('[ { "constant": false, "inputs": [ { "name": "_lender", "type": "string" }, { "name": "_borrower", "type": "string" }, { "name": "_amount", "type": "uint256" } ], "name": "createLoanRecord", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "anonymous": false, "inputs": [ { "indexed": false, "name": "", "type": "uint256" } ], "name": "loan_id_reply", "type": "event" }, { "constant": false, "inputs": [ { "name": "_loan_id", "type": "uint256" } ], "name": "payBackLoan", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": true, "inputs": [ { "name": "_loan_id", "type": "uint256" } ], "name": "getStatus", "outputs": [ { "name": "", "type": "string" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": true, "inputs": [ { "name": "", "type": "uint256" } ], "name": "loans", "outputs": [ { "name": "id", "type": "uint256" }, { "name": "lender", "type": "string" }, { "name": "borrower", "type": "string" }, { "name": "amount", "type": "uint256" }, { "name": "status", "type": "string" } ], "payable": false, "stateMutability": "view", "type": "function" } ]');
+  
+  
+  var Contract = new web3.eth.Contract(ABI, '0x054f1FF1Bd739f9a9F37ad95cc3Db70f27E70827');
+  console.log(Contract)
+  
+  web3socket = new Web3(new Web3.providers.WebsocketProvider("ws://127.0.0.1:7545"));
+  
+   web3socket.eth.getAccounts(function(err, accounts) {
+ if (err != null) {
+   alert("Error retrieving accounts.");
+   return;
+   }
+ if (accounts.length == 0) {
+    alert("No account found! Make sure the Ethereum client is configured properly.");
+   return;
+  }
+  account = accounts[0];
+  console.log('Account: ' + account);
+  web3.eth.defaultAccount = account;
+ });
+  
+  
+socketInstance =new web3socket.eth.Contract(ABI,'0x054f1FF1Bd739f9a9F37ad95cc3Db70f27E70827');
+socketInstance.events.loan_id_reply((err, events)=>{
+console.log(err, "New loan created, with id: "+events.returnValues[0])})
+
+
+
+//web3socket.eth.getAccounts()
+//.then(console.log);
+  
+// console.log(err, events) if you want to see the whole event  
+ 
+  var Contract = socketInstance;
+  
+ // Contract.methods.getStatus().call()
+  
+ //'0x8033FB394F5969EaCe629BB291ccc0f5f3264D7B'
+        
+        Contract.methods.createLoanRecord('Lebron','Tht', 987).call({from: web3.eth.defaultAccount});
+        
+        
+        $("#button").click(function() {
+            Contract.methods.createLoanRecord($("#lender").val(), $("#borrower").val(), $("#amount").val()).send({from: '0x8033FB394F5969EaCe629BB291ccc0f5f3264D7B', gas:3000000});
+        });
+        
+        
+        Contract.methods.getStatus(2).call()
+        .then(console.log)
+        
+        
+
+       
+       
+       
+       
+    </script>
+    </body>
+    
+    
+    
+</html>
+    
+    
+
+
+
