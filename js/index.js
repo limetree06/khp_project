@@ -2,11 +2,12 @@
 //const web3socket = new Web3('ws://localhost:8546');
 //web3socket.setProvider(new Web3.providers.WebsocketProvider('ws://127.0.0.1:8546'));
 
+
 var NUM;
 var waste;
 var STATE;
-//web3socket = new Web3(new Web3.providers.WebsocketProvider("ws://127.0.0.1:7545"));
-web3socket = new Web3(new Web3.providers.WebsocketProvider("ws://ropsten.infura.io/ws/v3/b43b854774aa450e8214906196e0efc6"));
+//web3socket = new Web3(new Web3.providers.WebsocketProvider("wss://127.0.0.1:7545"));
+web3socket = new Web3(new Web3.providers.WebsocketProvider("wss://ropsten.infura.io/ws/v3/b43b854774aa450e8214906196e0efc6"));
 const privateKey = "884733f6e66544117f0af62c709d3c574013d734a0c78a1cd24ebe83f5c02a9d";
 /*
 web3socket.eth.getAccounts(function(err, accounts) {
@@ -110,7 +111,7 @@ function PrintnAlarm(events, theevent){
       $("#button_sto").click(function() {
         STATE = "storage";
         NUM = $("#getst").val();
-        Contract.methods.storageDrum(NUM,$("#temp_sto").val()).send({from: web3socket.eth.accounts.wallet[0].address, gas:3000000});
+        Contract.methods.storageDrum(NUM,$("#temp_sto").val()).send({from: web3socket.eth.accounts.wallet[0].address, gas:300000});
   });
 
   function agree(){ 
